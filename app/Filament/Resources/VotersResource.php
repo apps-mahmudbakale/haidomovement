@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\VotersResource\Pages;
 use App\Filament\Resources\VotersResource\RelationManagers;
-use App\Models\Voters;
+use App\Models\Voter;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class VotersResource extends Resource
 {
-    protected static ?string $model = Voters::class;
+    protected static ?string $model = Voter::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -31,7 +31,36 @@ class VotersResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('full_name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('gender')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('age_range')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('phone_number')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('residential_address')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('lga.name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('ward.name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('polling_unit.name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('voters_card_number')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //

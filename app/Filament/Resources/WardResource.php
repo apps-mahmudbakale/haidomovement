@@ -23,7 +23,12 @@ class WardResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('lga_id')
+                    ->relationship('lga', 'name')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +36,12 @@ class WardResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('lga.name')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
