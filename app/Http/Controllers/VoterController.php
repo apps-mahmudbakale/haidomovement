@@ -209,4 +209,9 @@ class VoterController extends Controller
             ]
         ]);
     }
+
+    public function saveVoter(Request $request){
+        dd($request);
+
+    }
 }

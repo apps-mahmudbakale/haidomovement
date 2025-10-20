@@ -9,12 +9,20 @@ Route::get('/', function () {
 
 // Voter resource routes
 Route::resource('voters', VoterController::class)->except(['create', 'edit']);
+Route::post('voters/save', [VoterController::class, 'saveVoter']);
 
 // Get polling units by ward ID
 Route::get('wards/{wardId}/polling-units', [VoterController::class, 'getPollingUnitsByWard']);
 
 // Get wards by LGA name
 Route::get('lgas/{lgaName}/wards', [VoterController::class, 'getWardsByLga']);
+
+// Get CSRF token
+Route::get('/csrf-token', function () {
+    return response()->json([
+        'token' => csrf_token()
+    ]);
+});
 
 // Get available age ranges
 Route::get('age-ranges', function () {
