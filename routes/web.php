@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register', function () {
+    return view('register');
+});
+
 // Voter resource routes
 Route::resource('voters', VoterController::class)->except(['create', 'edit']);
 Route::post('voters/save', [VoterController::class, 'saveVoter']);
@@ -18,11 +22,7 @@ Route::get('wards/{wardId}/polling-units', [VoterController::class, 'getPollingU
 Route::get('lgas/{lgaName}/wards', [VoterController::class, 'getWardsByLga']);
 
 // Get CSRF token
-Route::get('/csrf-token', function () {
-    return response()->json([
-        'token' => csrf_token()
-    ]);
-});
+
 
 // Get available age ranges
 Route::get('age-ranges', function () {

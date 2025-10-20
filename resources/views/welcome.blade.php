@@ -104,7 +104,7 @@
             <nav class="hidden md:flex items-center">
                 <a href="#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">About</a>
                 <a href="#objectives" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Objectives</a>
-                <a href="registration.html" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Join Movement</a>
+                <a href="/register" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Join Movement</a>
 
                 <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none micro-animation transition-colors duration-200">
                     <i id="theme-icon" class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
