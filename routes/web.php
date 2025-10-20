@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::redirect('/login', '/admin/login')->name('login');ame('login');
+Route::redirect('/login', '/admin/login')->name('login');
 
 
 Route::get('/register', function () {
