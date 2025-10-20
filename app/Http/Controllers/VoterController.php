@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Voter;
 use App\Models\Ward;
+use App\Models\LGA;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class VoterController extends Controller
 {
@@ -33,14 +34,27 @@ class VoterController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
-            'date_of_birth' => 'required|date|before:today',
+            'age_range' => 'required|in:18-25,26-30,31-40,41-50,51-60,61-70,71+',
             'phone_number' => 'required|string|max:20',
             'email' => 'nullable|email|max:255|unique:voters,email',
             'residential_address' => 'required|string',
-            'local_government_area' => 'required|string|max:255',
-            'ward' => 'required|string|max:255',
-            'polling_unit' => 'required|string|max:255',
+            'lga_id' => 'required|exists:l_g_a_s,id',
+            'ward_id' => [
+                'required',
+                Rule::exists('wards', 'id')->where(function ($query) use ($request) {
+                    $query->where('lga_id', $request->lga_id);
+                })
+            ],
+            'polling_unit_id' => [
+                'required',
+                Rule::exists('polling_units', 'id')->where(function ($query) use ($request) {
+                    $query->where('ward_id', $request->ward_id);
+                })
+            ],
             'voters_card_number' => 'required|string|max:50|unique:voters,voters_card_number',
+        ], [
+            'ward_id.exists' => 'The selected ward does not exist in the specified LGA.',
+            'polling_unit_id.exists' => 'The selected polling unit does not exist in the specified ward.'
         ]);
 
         if ($validator->fails()) {
@@ -142,16 +156,15 @@ class VoterController extends Controller
     }
 
     /**
-     * Get polling units by ward name
+     * Get polling units by ward ID
      *
-     * @param  string  $wardName
+     * @param  int  $wardId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getPollingUnitsByWard($wardName)
+    public function getPollingUnitsByWard($wardId)
     {
-        $ward = Ward::where('name', 'like', '%' . $wardName . '%')
-            ->with('pollingUnits')
-            ->first();
+        $ward = Ward::with('pollingUnits')
+            ->find($wardId);
 
         if (!$ward) {
             return response()->json([
@@ -165,6 +178,34 @@ class VoterController extends Controller
             'data' => [
                 'ward' => $ward->name,
                 'polling_units' => $ward->pollingUnits
+            ]
+        ]);
+    }
+
+    /**
+     * Get wards by LGA name
+     *
+     * @param  string  $lgaName
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getWardsByLga($lgaName)
+    {
+        $lga = LGA::where('name', 'like', '%' . $lgaName . '%')
+            ->with('wards')
+            ->first();
+
+        if (!$lga) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'LGA not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'lga' => $lga->name,
+                'wards' => $lga->wards
             ]
         ]);
     }

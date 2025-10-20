@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\LGA;
+use App\Models\Ward;
+use App\Models\PollingUnit;
 
 class Voter extends Model
 {
@@ -17,7 +20,7 @@ class Voter extends Model
     protected $fillable = [
         'full_name',
         'gender',
-        'date_of_birth',
+        'age_range',
         'phone_number',
         'email',
         'residential_address',
@@ -28,11 +31,47 @@ class Voter extends Model
     ];
 
     /**
-     * Get the polling unit that the voter is registered in.
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
      */
-    public function pollingUnit()
+    protected $casts = [
+        'age_range' => 'string',
+    ];
+
+    /**
+     * Get the available age ranges.
+     *
+     * @return array
+     */
+    public static function getAgeRanges()
     {
-        return $this->belongsTo(PollingUnit::class);
+        return [
+            '18-25' => '18-25 years',
+            '26-30' => '26-30 years',
+            '31-40' => '31-40 years',
+            '41-50' => '41-50 years',
+            '51-60' => '51-60 years',
+            '61-70' => '61-70 years',
+            '71+' => '71+ years',
+        ];
+    }
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'date_of_birth' => 'date',
+    ];
+
+    /**
+     * Get the LGA that the voter belongs to.
+     */
+    public function lga()
+    {
+        return $this->belongsTo(LGA::class);
     }
 
     /**
@@ -44,19 +83,10 @@ class Voter extends Model
     }
 
     /**
-     * Get the LGA that the voter belongs to.
+     * Get the polling unit that the voter is registered in.
      */
-    public function lga()
+    public function pollingUnit()
     {
-        return $this->belongsTo(LGA::class);
+        return $this->belongsTo(PollingUnit::class);
     }
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'date_of_birth' => 'date',
-    ];
 }

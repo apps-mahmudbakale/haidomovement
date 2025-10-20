@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class LGA extends Model
 {
@@ -18,4 +19,12 @@ class LGA extends Model
         'name',
         'state_id',
     ];
+
+    /**
+     * Get all wards for the LGA.
+     */
+    public function wards(): HasMany
+    {
+        return $this->hasMany(Ward::class, 'lga_id');
+    }
 }

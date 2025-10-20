@@ -18,3 +18,6 @@ Route::apiResource('voters', VoterController::class);
 
 // Additional custom routes can be added here
 Route::get('voters/search/{query}', [VoterController::class, 'search']);
+
+// Get polling units by ward name
+Route::get('wards/{wardName}/polling-units', [VoterController::class, 'getPollingUnitsByWard']);
