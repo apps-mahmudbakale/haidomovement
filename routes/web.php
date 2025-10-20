@@ -6,6 +6,10 @@ use App\Http\Controllers\VoterController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return redirect()->route('filament.admin.auth.login');
+})->name('login');
+
 
 Route::get('/register', function () {
     return view('register');
