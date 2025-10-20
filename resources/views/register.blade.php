@@ -254,9 +254,8 @@
                     <!-- Alert Messages -->
                     <div id="alert-container"></div>
 
-                    <form id="registration-form">
-                        <!-- CSRF token will be fetched from the server and stored here -->
-                        <input type="hidden" id="csrfToken" name="csrf_token" value="">
+                    <form id="registration-form" method="POST" action="{{ route('voters.store') }}">
+                        @csrf
                         <!-- Step 1: Personal Information -->
                         <div id="step-1" class="form-step active">
                             <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Personal Information</h3>
@@ -488,7 +487,7 @@
     <script src="script.js" defer></script>
     <script>
         // Registration form configuration
-        const DIRECTUS_API_URL = CONFIG?.DIRECTUS_API_URL || 'http://haido.test';
+        const DIRECTUS_API_URL = 'http://haido.test';
 
         // Ward data for each LGA in Sokoto State
         const wardData = {
@@ -783,13 +782,6 @@
             prevBtn.addEventListener('click', () => {
                 prevStep();
             });
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (validateCurrentStep()) {
-                    submitForm();
-                }
-            });
         }
 
         // Step navigation functions
@@ -850,131 +842,25 @@
             });
         }
 
-        // Submit form
-        async function submitForm() {
-            const submitBtn = document.getElementById('submit-btn');
-            const submitText = document.getElementById('submit-text');
-            const submitLoading = document.getElementById('submit-loading');
+        // Handle form submission feedback
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registration-form');
+            if (form) {
+                form.addEventListener('submit', function() {
+                    const submitBtn = document.getElementById('submit-btn');
+                    const submitText = document.getElementById('submit-text');
+                    const submitLoading = document.getElementById('submit-loading');
 
-            submitText.classList.add('hidden');
-            submitLoading.classList.remove('hidden');
-            submitBtn.disabled = true;
-
-            try {
-                const formDataToSubmit = collectFormData();
-
-                // Resolve submit URL: prefer configured endpoint, fall back to Directus default
-                function getSubmitUrl() {
-                    const configured = (typeof CONFIG !== 'undefined' && CONFIG?.ENDPOINTS && CONFIG.ENDPOINTS.MEMBERSHIP_APPLICATION) ? CONFIG.ENDPOINTS.MEMBERSHIP_APPLICATION : null;
-                    const endpoint = configured || '/items/membership_application';
-                    // If configured is a full URL, use as-is
-                    if (/^https?:\/\//i.test(endpoint)) return endpoint;
-                    const base = (typeof CONFIG !== 'undefined' && CONFIG?.DIRECTUS_API_URL) ? CONFIG.DIRECTUS_API_URL : DIRECTUS_API_URL || '';
-                    return base.replace(/\/$/, '') + '/' + endpoint.replace(/^\//, '');
-                }
-
-                const submitUrl = getSubmitUrl();
-                console.log('Submitting application to', submitUrl, formDataToSubmit);
-
-                // Build headers and fetch options based on config
-                const headers = {
-                    'Content-Type': 'application/json'
-                };
-                // Attach CSRF or Authorization if configured
-                try {
-                    if (typeof CONFIG !== 'undefined' && CONFIG?.API?.SUBMIT) {
-                        const submitCfg = CONFIG.API.SUBMIT || {};
-                        if (submitCfg.CSRF_TOKEN) {
-                            headers['X-CSRF-TOKEN'] = submitCfg.CSRF_TOKEN;
-                        }
-                        if (submitCfg.AUTH_BEARER) {
-                            headers['Authorization'] = 'Bearer ' + submitCfg.AUTH_BEARER;
-                        }
+                    if (submitBtn && submitText && submitLoading) {
+                        submitText.classList.add('hidden');
+                        submitLoading.classList.remove('hidden');
+                        submitBtn.disabled = true;
                     }
-                } catch (e) {
-                    console.warn('Unable to read CONFIG for submit headers', e);
-                }
-
-                // If we fetched a CSRF token into the hidden field, attach it to headers and payload
-                try {
-                    const hidden = document.getElementById('csrfToken');
-                    if (hidden && hidden.value) {
-                        headers['X-CSRF-TOKEN'] = hidden.value;
-                        // Attach common alternative header name too
-                        headers['X-XSRF-TOKEN'] = hidden.value;
-                        // also include in the payload for servers expecting it in body
-                        formDataToSubmit.csrf_token = hidden.value;
-                    }
-                } catch (e) {
-                    console.warn('Unable to attach hidden CSRF token', e);
-                }
-
-                // Log final payload so you can inspect in DevTools console and verify csrf_token presence
-                try {
-                    console.log('Final form payload (about to submit):', formDataToSubmit);
-                } catch (e) { /* ignore logging errors */ }
-
-                const fetchOptions = {
-                    method: 'POST',
-                    headers,
-                    body: JSON.stringify(formDataToSubmit)
-                };
-
-                // Note: credentials (cookies) are no longer added by default. If your server requires session cookies
-                // to be sent, update the client/server agreement and re-enable credentials explicitly.
-
-                const response = await fetch(submitUrl, fetchOptions);
-
-                if (!response.ok) {
-                    // Handle 419 specifically (Laravel-style CSRF/session expired)
-                    if (response.status === 419) {
-                        showAlert('Session expired (419). Please reload the page, ensure cookies are enabled, and try again.', 'error');
-                        submitText.classList.remove('hidden');
-                        submitLoading.classList.add('hidden');
-                        submitBtn.disabled = false;
-                        return;
-                    }
-
-                    let text = '';
-                    try { text = await response.text(); } catch (e) { /* ignore */ }
-                    throw new Error('Failed to submit application: ' + (text || response.status));
-                }
-
-                document.getElementById('registration-form').parentElement.classList.add('hidden');
-                document.getElementById('success-message').classList.remove('hidden');
-
-                document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
-
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                showAlert('Failed to submit application. Please try again.', 'error');
-
-                submitText.classList.remove('hidden');
-                submitLoading.classList.add('hidden');
-                submitBtn.disabled = false;
+                });
             }
-        }
+        });
 
-        // Collect form data
-        function collectFormData() {
-            const emailValue = document.getElementById('email').value.trim();
-
-            return {
-                full_name: document.getElementById('fullname').value.trim(),
-                gender: document.getElementById('gender').value,
-                age_range: document.getElementById('ageRange').value || null,
-                mobile_phone: document.getElementById('phone').value.trim(),
-                email: emailValue || 'no-email@placeholder.com',
-                address_of_residence: document.getElementById('address').value.trim() || null,
-                lga: document.getElementById('lga').value || null,
-                ward: document.getElementById('ward').value || null,
-                polling_unit: document.getElementById('pollingUnit').value || null,
-                has_voter_card: (document.getElementById('hasVoterCard') ? document.getElementById('hasVoterCard').value === 'yes' : null),
-                additional_notes: document.getElementById('additionalNotes') ? document.getElementById('additionalNotes').value.trim() : null,
-                status: 'pending',
-                notification_method: emailValue ? 'email' : 'sms'
-            };
-        }
+        // Form field handling remains for client-side validation
 
         // Show alert message
         function showAlert(message, type = 'error') {
