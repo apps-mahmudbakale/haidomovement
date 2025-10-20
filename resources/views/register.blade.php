@@ -265,17 +265,17 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="fullname">
                                         Full Name <span class="text-red-500">*</span>
                                     </label>
-                                    <input class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="fullname" type="text" required placeholder="Enter your full name">
+                                    <input name="full_name" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="fullname" type="text" required placeholder="Enter your full name">
                                 </div>
 
                                 <div>
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="gender">
                                         Gender <span class="text-red-500">*</span>
                                     </label>
-                                    <select class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="gender" required>
+                                    <select name="gender" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="gender" required>
                                         <option value="">Select gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
                                     </select>
                                 </div>
 
@@ -283,13 +283,13 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="ageRange">
                                         Age Range <span class="text-red-500">*</span>
                                     </label>
-                                    <select class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="ageRange" required>
+                                    <select name="age_range" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="ageRange" required>
                                         <option value="">Select age range</option>
-                                        <option value="18-24">18 - 24</option>
-                                        <option value="25-34">25 - 34</option>
-                                        <option value="35-44">35 - 44</option>
-                                        <option value="45-54">45 - 54</option>
-                                        <option value="55-64">55 - 64</option>
+                                        <option value="18-24">18-24</option>
+                                        <option value="25-34">25-34</option>
+                                        <option value="35-44">35-44</option>
+                                        <option value="45-54">45-54</option>
+                                        <option value="55-64">55-64</option>
                                         <option value="65+">65+</option>
                                     </select>
                                 </div>
@@ -298,21 +298,21 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="phone">
                                         Phone Number <span class="text-red-500">*</span>
                                     </label>
-                                    <input class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="phone" type="tel" required placeholder="Enter your phone number">
+                                    <input name="phone_number" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="phone" type="tel" required placeholder="Enter your phone number">
                                 </div>
 
                                 <div>
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="email">
                                         Email Address
                                     </label>
-                                    <input class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="email" type="email" placeholder="Enter your email address">
+                                    <input name="email" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="email" type="email" placeholder="Enter your email address">
                                 </div>
 
                                 <div class="md:col-span-2">
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="address">
                                         Residential Address <span class="text-red-500">*</span>
                                     </label>
-                                    <textarea class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="address" rows="2" required placeholder="Enter your residential address"></textarea>
+                                    <textarea name="residential_address" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="address" rows="2" required placeholder="Enter your residential address"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -326,31 +326,11 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="lga">
                                         Local Government Area <span class="text-red-500">*</span>
                                     </label>
-                                    <select class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="lga" required>
+                                    <select name="lga_id" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="lga" required>
                                         <option value="">Select LGA</option>
-                                        <option value="binji">Binji</option>
-                                        <option value="bodinga">Bodinga</option>
-                                        <option value="dange-shuni">Dange-Shuni</option>
-                                        <option value="gada">Gada</option>
-                                        <option value="goronyo">Goronyo</option>
-                                        <option value="gudu">Gudu</option>
-                                        <option value="gwadabawa">Gwadabawa</option>
-                                        <option value="illela">Illela</option>
-                                        <option value="isa">Isa</option>
-                                        <option value="kebbe">Kebbe</option>
-                                        <option value="kware">Kware</option>
-                                        <option value="rabah">Rabah</option>
-                                        <option value="sabon-birni">Sabon Birni</option>
-                                        <option value="shagari">Shagari</option>
-                                        <option value="silame">Silame</option>
-                                        <option value="sokoto-north">Sokoto North</option>
-                                        <option value="sokoto-south">Sokoto South</option>
-                                        <option value="tambuwal">Tambuwal</option>
-                                        <option value="tangaza">Tangaza</option>
-                                        <option value="tureta">Tureta</option>
-                                        <option value="wamako">Wamako</option>
-                                        <option value="wurno">Wurno</option>
-                                        <option value="yabo">Yabo</option>
+                                        @foreach(\App\Models\LGA::all() as $lga)
+                                            <option value="{{ $lga->id }}">{{ $lga->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -358,7 +338,7 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="ward">
                                         Ward <span class="text-red-500">*</span>
                                     </label>
-                                    <select class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="ward" required>
+                                    <select name="ward_id" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="ward" required>
                                         <option value="">Select ward</option>
                                     </select>
                                 </div>
@@ -367,7 +347,7 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="pollingUnit">
                                         Polling Unit <span class="text-red-500">*</span>
                                     </label>
-                                    <select class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="pollingUnit" required>
+                                    <select name="polling_unit_id" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="pollingUnit" required>
                                         <option value="">Select polling unit</option>
                                     </select>
                                 </div>
@@ -376,10 +356,10 @@
                                     <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="hasVoterCard">
                                         Do you have a Voter's Card? <span class="text-red-500">*</span>
                                     </label>
-                                    <select id="hasVoterCard" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                                    <select name="voters_card_number" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="hasVoterCard" required>
                                         <option value="">Select</option>
-                                        <option value="yes">Yes</option>
-                                        <option value="no">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </div>
 
@@ -487,7 +467,7 @@
     <script src="script.js" defer></script>
     <script>
         // Registration form configuration
-        const DIRECTUS_API_URL = 'http://haido.test';
+        const DIRECTUS_API_URL = 'http://drshamsuddeenhaidomovement.com';
 
         // Ward data for each LGA in Sokoto State
         const wardData = {

@@ -58,15 +58,6 @@ class Voter extends Model
     }
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'date_of_birth' => 'date',
-    ];
-
-    /**
      * Get the LGA that the voter belongs to.
      */
     public function lga()

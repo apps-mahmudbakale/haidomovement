@@ -34,7 +34,7 @@ class VoterController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|max:255',
             'gender' => 'required|in:male,female,other',
-            'age_range' => 'required|in:18-25,26-30,31-40,41-50,51-60,61-70,71+',
+            'age_range' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
             'email' => 'nullable|email|max:255|unique:voters,email',
             'residential_address' => 'required|string',
@@ -51,7 +51,6 @@ class VoterController extends Controller
                     $query->where('ward_id', $request->ward_id);
                 })
             ],
-            'voters_card_number' => 'required|string|max:50|unique:voters,voters_card_number',
         ], [
             'ward_id.exists' => 'The selected ward does not exist in the specified LGA.',
             'polling_unit_id.exists' => 'The selected polling unit does not exist in the specified ward.'
@@ -190,7 +189,7 @@ class VoterController extends Controller
      */
     public function getWardsByLga($lgaName)
     {
-        $lga = LGA::where('name', 'like', '%' . $lgaName . '%')
+        $lga = LGA::where('id', $lgaName)
             ->with('wards')
             ->first();
 
