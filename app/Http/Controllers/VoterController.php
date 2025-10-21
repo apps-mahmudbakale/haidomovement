@@ -31,46 +31,57 @@ class VoterController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'full_name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female,other',
-            'age_range' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:20',
-            'email' => 'nullable|email|max:255|unique:voters,email',
-            'residential_address' => 'required|string',
-            'lga_id' => 'required|exists:l_g_a_s,id',
-            'ward_id' => [
-                'required',
-                Rule::exists('wards', 'id')->where(function ($query) use ($request) {
-                    $query->where('lga_id', $request->lga_id);
-                })
-            ],
-            'polling_unit_id' => [
-                'required',
-                Rule::exists('polling_units', 'id')->where(function ($query) use ($request) {
-                    $query->where('ward_id', $request->ward_id);
-                })
-            ],
-        ], [
-            'ward_id.exists' => 'The selected ward does not exist in the specified LGA.',
-            'polling_unit_id.exists' => 'The selected polling unit does not exist in the specified ward.'
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'full_name' => 'required|string|max:255',
+                'gender' => 'required|in:male,female,other',
+                'age_range' => 'required|string|max:255',
+                'phone_number' => 'required|string|max:20',
+                'email' => 'nullable|email|max:255|unique:voters,email',
+                'residential_address' => 'required|string',
+                'lga_id' => 'required|exists:l_g_a_s,id',
+                'ward_id' => [
+                    'required',
+                    Rule::exists('wards', 'id')->where(function ($query) use ($request) {
+                        $query->where('lga_id', $request->lga_id);
+                    })
+                ],
+                'polling_unit_id' => [
+                    'required',
+                    Rule::exists('polling_units', 'id')->where(function ($query) use ($request) {
+                        $query->where('ward_id', $request->ward_id);
+                    })
+                ],
+                'voters_card_number' => 'required|string|max:50',
+            ], [
+                'ward_id.exists' => 'The selected ward does not exist in the specified LGA.',
+                'polling_unit_id.exists' => 'The selected polling unit does not exist in the specified ward.'
+            ]);
 
-        if ($validator->fails()) {
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Please fix the errors in the form.',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            $voter = Voter::create($request->all());
+
             return response()->json([
-                'status' => 'error',
-                'message' => 'Validation error',
-                'errors' => $validator->errors()
-            ], 422);
+                'success' => true,
+                'message' => 'Registration successful! Thank you for joining the movement.',
+                'data' => $voter
+            ], 201);
+
+        } catch (\Exception $e) {
+            \Log::error('Voter registration error: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while processing your registration. Please try again.',
+                'error' => config('app.debug') ? $e->getMessage() : null
+            ], 500);
         }
-
-        $voter = Voter::create($request->all());
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Voter created successfully',
-            'data' => $voter
-        ], 201);
     }
 
     /**

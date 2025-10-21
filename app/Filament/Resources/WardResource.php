@@ -28,7 +28,8 @@ class WardResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Select::make('lga_id')
                     ->relationship('lga', 'name')
-                    ->required(),
+                    ->required()
+                    ->searchable(),
             ]);
     }
 

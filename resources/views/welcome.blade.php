@@ -96,7 +96,7 @@
     <!-- Navigation -->
     <header id="header" class="py-4 px-6 transition-all duration-300 bg-white dark:bg-gray-900">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center">
+            <a href="/" class="flex items-center">
                 <!-- Updated Logo -->
                 <img src="./logo.png" alt="Dr. Shamsuddeen Aliyu Haido " class="h-20 md:h-24 logo-fade-in">
             </a>
@@ -129,7 +129,7 @@
         <nav class="flex flex-col space-y-4">
             <a href="#about" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">About</a>
             <a href="#objectives" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Objectives</a>
-            <a href="registration.html" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Join SAF</a>
+            <a href="/register'" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Join SAF</a>
 
             <div class="flex items-center mt-4">
                 <span class="mr-3 text-gray-800 dark:text-gray-200">Theme:</span>
@@ -564,8 +564,7 @@
                         </p>
                         <p class="mb-2 flex items-start">
                             <i class="fas fa-phone-alt mr-3 mt-1"></i>
-                            <span>+234 XXX XXX XXXX<br>
-                                +234 XXX XXX XXXX</span>
+                            <span>+2347003100161</span>
                         </p>
                         <p class="mb-2 flex items-start">
                             <i class="fas fa-envelope mr-3 mt-1"></i>

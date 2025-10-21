@@ -195,14 +195,14 @@
     <!-- Navigation -->
     <header id="header" class="py-4 px-6 transition-all duration-300 bg-white dark:bg-gray-900">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
+            <a href="/" class="flex items-center">
                 <img src="./logo.png" alt="Dr. Shamsuddeen Aliyu Haido" class="h-20 md:h-24 logo-fade-in">
             </a>
             </a>
 
             <nav class="hidden md:flex items-center">
-                <a href="index.html#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">About</a>
-                <a href="index.html#objectives" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Objectives</a>
+                <a href="/#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">About</a>
+                <a href="/#objectives" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Objectives</a>
 
                 <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none micro-animation transition-colors duration-200">
                     <i id="theme-icon" class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
@@ -256,6 +256,7 @@
 
                     <form id="registration-form" method="POST" action="{{ route('voters.store') }}">
                         @csrf
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <!-- Step 1: Personal Information -->
                         <div id="step-1" class="form-step active">
                             <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Personal Information</h3>
@@ -467,7 +468,7 @@
     <script src="script.js" defer></script>
     <script>
         // Registration form configuration
-        const DIRECTUS_API_URL = 'http://drshamsuddeenhaidomovement.com';
+        const DIRECTUS_API_URL = 'https://drshamsuddeenhaidomovement.com';
 
         // Ward data for each LGA in Sokoto State
         const wardData = {
@@ -823,18 +824,89 @@
         }
 
         // Handle form submission feedback
+        // Handle form submission
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('registration-form');
             if (form) {
-                form.addEventListener('submit', function() {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
                     const submitBtn = document.getElementById('submit-btn');
                     const submitText = document.getElementById('submit-text');
                     const submitLoading = document.getElementById('submit-loading');
+                    const formContainer = document.querySelector('.bg-white');
+                    const successMessage = document.getElementById('success-message');
 
-                    if (submitBtn && submitText && submitLoading) {
-                        submitText.classList.add('hidden');
-                        submitLoading.classList.remove('hidden');
-                        submitBtn.disabled = true;
+                    try {
+                        // Show loading state
+                        if (submitBtn && submitText && submitLoading) {
+                            submitText.classList.add('hidden');
+                            submitLoading.classList.remove('hidden');
+                            submitBtn.disabled = true;
+                        }
+
+                        const formData = new FormData(form);
+
+                        // Get CSRF token from meta tag or form input
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content ||
+                                        document.querySelector('input[name="_token"]')?.value;
+
+                        // Set up headers
+                        const headers = {
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        };
+
+                        // Add CSRF token to headers if available
+                        if (csrfToken) {
+                            headers['X-CSRF-TOKEN'] = csrfToken;
+                        } else {
+                            // If no CSRF token found, add it to the form data
+                            formData.append('_token', '{{ csrf_token() }}');
+                        }
+
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            headers: headers,
+                            body: formData
+                        });
+
+                        const data = await response.json();
+
+                        if (!response.ok) {
+                            throw data;
+                        }
+
+                        // Show success message
+                        if (formContainer && successMessage) {
+                            formContainer.classList.add('hidden');
+                            successMessage.classList.remove('hidden');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+
+                    } catch (error) {
+                        // Handle errors
+                        let errorMessage = 'An error occurred. Please try again.';
+
+                        if (error.errors) {
+                            // Handle validation errors
+                            const errorMessages = [];
+                            for (const [field, messages] of Object.entries(error.errors)) {
+                                errorMessages.push(...messages);
+                            }
+                            errorMessage = errorMessages.join('\n');
+                        } else if (error.message) {
+                            errorMessage = error.message;
+                        }
+
+                        showAlert(errorMessage, 'error');
+                    } finally {
+                        // Reset button state
+                        if (submitBtn && submitText && submitLoading) {
+                            submitText.classList.remove('hidden');
+                            submitLoading.classList.add('hidden');
+                            submitBtn.disabled = false;
+                        }
                     }
                 });
             }
