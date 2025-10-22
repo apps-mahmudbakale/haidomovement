@@ -20,7 +20,6 @@ Route::get('/registration-success', function () {
 
 // Voter resource routes
 Route::resource('voters', VoterController::class)->except(['create', 'edit']);
-Route::post('voters/save', [VoterController::class, 'saveVoter']);
 
 // Get polling units by ward ID
 Route::get('wards/{wardId}/polling-units', [VoterController::class, 'getPollingUnitsByWard']);
