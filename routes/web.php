@@ -50,3 +50,6 @@ Route::get('age-ranges', function () {
         ]
     ]);
 });
+
+Route::post('voters/save', [VoterController::class, 'saveVoter']);
+

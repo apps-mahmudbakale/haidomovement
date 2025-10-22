@@ -73,7 +73,7 @@ class VoterController extends Controller
                 'name' => $voter->full_name,
                 'reference' => 'SAF-' . str_pad($voter->id, 5, '0', STR_PAD_LEFT)
             ];
-            
+
             session(['registration_data' => $registrationData]);
 
             if ($request->ajax() || $request->wantsJson()) {
@@ -230,5 +230,9 @@ class VoterController extends Controller
                 'wards' => $lga->wards
             ]
         ]);
+    }
+
+     public function saveVoter(Request $request) {
+        dd($request->all());
     }
 }
