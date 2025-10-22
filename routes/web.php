@@ -5,14 +5,18 @@ use App\Http\Controllers\VoterController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::redirect('/login', '/admin/login')->name('login');
 
 
 Route::get('/register', function () {
     return view('register');
-});
+})->name('register');
+
+Route::get('/registration-success', function () {
+    return view('success');
+})->name('registration.success');
 
 // Voter resource routes
 Route::resource('voters', VoterController::class)->except(['create', 'edit']);
@@ -25,6 +29,9 @@ Route::get('wards/{wardId}/polling-units', [VoterController::class, 'getPollingU
 Route::get('lgas/{lgaName}/wards', [VoterController::class, 'getWardsByLga']);
 
 // Get CSRF token
+Route::get('/csrf-token', function (Request $request) {
+    return response()->json(['token' => csrf_token()]);
+});
 
 
 // Get available age ranges

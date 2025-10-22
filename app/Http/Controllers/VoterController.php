@@ -68,11 +68,23 @@ class VoterController extends Controller
 
             $voter = Voter::create($request->all());
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Registration successful! Thank you for joining the movement.',
-                'data' => $voter
-            ], 201);
+            // Store the voter data in the session to display on the success page if needed
+            $registrationData = [
+                'name' => $voter->full_name,
+                'reference' => 'SAF-' . str_pad($voter->id, 5, '0', STR_PAD_LEFT)
+            ];
+            
+            session(['registration_data' => $registrationData]);
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Registration successful!',
+                    'redirect' => route('registration.success')
+                ]);
+            }
+
+            return redirect()->route('registration.success');
 
         } catch (\Exception $e) {
             \Log::error('Voter registration error: ' . $e->getMessage());
@@ -218,10 +230,5 @@ class VoterController extends Controller
                 'wards' => $lga->wards
             ]
         ]);
-    }
-
-    public function saveVoter(Request $request){
-        dd($request);
-
     }
 }

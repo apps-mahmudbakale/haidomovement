@@ -424,7 +424,7 @@
                     <p class="text-gray-600 dark:text-gray-400 mb-6">
                         Thank you for joining Dr. Shamsuddeen's Solidarity Movement. Your registration has been received, and we're excited to have you as part of our mission for a better Sokoto State. You will receive a confirmation via email or SMS shortly.
                     </p>
-                    <a href="index.html" class="inline-block bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
+                    <a href="{{ route('home') }}" class="inline-block bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
                         <i class="fas fa-home mr-2"></i> Return to Home
                     </a>
                 </div>
@@ -868,20 +868,38 @@
                         const response = await fetch(form.action, {
                             method: 'POST',
                             headers: headers,
-                            body: formData
+                            body: formData,
+                            redirect: 'manual' // Don't follow redirects automatically
                         });
 
-                        const data = await response.json();
+                        // Check if the response is a redirect
+                        if (response.type === 'opaqueredirect' || response.redirected) {
+                            // If it's a redirect, let the browser handle it
+                            window.location.href = response.url || '/registration-success';
+                            return;
+                        }
+
+                        // If not a redirect, try to parse as JSON
+                        let data;
+                        try {
+                            const text = await response.text();
+                            data = text ? JSON.parse(text) : {};
+                        } catch (e) {
+                            // If JSON parsing fails, it might be an HTML error page
+                            console.error('Failed to parse response:', e);
+                            throw new Error('An unexpected error occurred. Please try again.');
+                        }
 
                         if (!response.ok) {
                             throw data;
                         }
 
-                        // Show success message
-                        if (formContainer && successMessage) {
-                            formContainer.classList.add('hidden');
-                            successMessage.classList.remove('hidden');
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        // If we get here, it's a successful JSON response
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        } else {
+                            // Fallback to default success page
+                            window.location.href = '/registration-success';
                         }
 
                     } catch (error) {
