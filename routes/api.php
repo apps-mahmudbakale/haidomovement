@@ -21,3 +21,6 @@ Route::get('voters/search/{query}', [VoterController::class, 'search']);
 
 // Get polling units by ward name
 Route::get('wards/{wardName}/polling-units', [VoterController::class, 'getPollingUnitsByWard']);
+
+Route::post('voters/save', [VoterController::class, 'saveVoter']);
+
