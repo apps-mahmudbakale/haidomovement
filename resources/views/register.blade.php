@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,8 +93,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Error and success messages */
@@ -191,6 +197,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <header id="header" class="py-4 px-6 transition-all duration-300 bg-white dark:bg-gray-900">
@@ -201,15 +208,19 @@
             </a>
 
             <nav class="hidden md:flex items-center">
-                <a href="/#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">About</a>
-                <a href="/#objectives" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Objectives</a>
+                <a href="/#about"
+                    class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">About</a>
+                <a href="/#objectives"
+                    class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400">Objectives</a>
 
-                <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none micro-animation transition-colors duration-200">
+                <button id="theme-toggle"
+                    class="ml-6 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none micro-animation transition-colors duration-200">
                     <i id="theme-icon" class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
                 </button>
             </nav>
 
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-800 dark:text-gray-200 focus:outline-none">
+            <button id="mobile-menu-button"
+                class="md:hidden p-2 rounded-md text-gray-800 dark:text-gray-200 focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
@@ -225,12 +236,15 @@
             </button>
         </div>
         <nav class="flex flex-col space-y-4">
-            <a href="index.html#about" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">About</a>
-            <a href="index.html#objectives" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Objectives</a>
+            <a href="index.html#about"
+                class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">About</a>
+            <a href="index.html#objectives"
+                class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Objectives</a>
 
             <div class="flex items-center mt-4">
                 <span class="mr-3 text-gray-800 dark:text-gray-200">Theme:</span>
-                <button id="mobile-theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none">
+                <button id="mobile-theme-toggle"
+                    class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none">
                     <i id="mobile-theme-icon" class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
                 </button>
             </div>
@@ -243,8 +257,11 @@
             <div class="max-w-4xl mx-auto">
                 <!-- Header -->
                 <div class="text-center mb-12" data-aos="fade-up">
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Join Dr. Shamsuddeen's Movement</h1>
-                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Stand with Dr. Shamsuddeen Aliyu Haido and be part of the transformative vision for Sokoto State. Your support strengthens our collective impact.</p>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Join Dr. Shamsuddeen's
+                        Movement</h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Stand with Dr. Shamsuddeen Aliyu Haido and
+                        be part of the transformative vision for Sokoto State. Your support strengthens our collective
+                        impact.</p>
 
                     <!-- Single-page form: all sections shown -->
                 </div>
@@ -259,21 +276,28 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <!-- Step 1: Personal Information -->
                         <div id="step-1" class="form-step active">
-                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Personal Information</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Personal Information
+                            </h3>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="md:col-span-2">
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="fullname">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="fullname">
                                         Full Name <span class="text-red-500">*</span>
                                     </label>
-                                    <input name="full_name" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="fullname" type="text" required placeholder="Enter your full name">
+                                    <input name="full_name"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="fullname" type="text" required placeholder="Enter your full name">
                                 </div>
 
                                 <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="gender">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="gender">
                                         Gender <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="gender" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="gender" required>
+                                    <select name="gender"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="gender" required>
                                         <option value="">Select gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -281,10 +305,13 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="ageRange">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="ageRange">
                                         Age Range <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="age_range" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="ageRange" required>
+                                    <select name="age_range"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="ageRange" required>
                                         <option value="">Select age range</option>
                                         <option value="18-24">18-24</option>
                                         <option value="25-34">25-34</option>
@@ -296,68 +323,98 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="phone">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="phone">
                                         Phone Number <span class="text-red-500">*</span>
                                     </label>
-                                    <input name="phone_number" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="phone" type="tel" required placeholder="Enter your phone number">
+                                    <input name="phone_number"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="phone" type="tel" required placeholder="Enter your phone number">
                                 </div>
 
                                 <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="email">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="email">
                                         Email Address
                                     </label>
-                                    <input name="email" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="email" type="email" placeholder="Enter your email address">
+                                    <input name="email"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="email" type="email" placeholder="Enter your email address">
                                 </div>
 
                                 <div class="md:col-span-2">
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="address">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="address">
                                         Residential Address <span class="text-red-500">*</span>
                                     </label>
-                                    <textarea name="residential_address" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="address" rows="2" required placeholder="Enter your residential address"></textarea>
+                                    <textarea name="residential_address"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="address" rows="2" required placeholder="Enter your residential address"></textarea>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Step 2: Voting Information -->
                         <div id="step-2" class="form-step active">
-                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Voting Information</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Voting Information
+                            </h3>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="lga">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="lga">
                                         Local Government Area <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="lga_id" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="lga" required>
+                                    <select name="lga_id"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="lga" required>
                                         <option value="">Select LGA</option>
-                                        @foreach(\App\Models\LGA::all() as $lga)
+                                        @foreach (\App\Models\LGA::all() as $lga)
                                             <option value="{{ $lga->id }}">{{ $lga->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="ward">
+                                <div class="relative">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="ward">
                                         Ward <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="ward_id" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="ward" required>
+                                    <select
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="ward" name="ward" required>
                                         <option value="">Select ward</option>
                                     </select>
+                                    <div id="ward-loader" class="dropdown-loader">
+                                        <div class="spinner"></div>
+                                        <span>Loading wards...</span>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="pollingUnit">
+                                <div class="relative">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="pollingUnit">
                                         Polling Unit <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="polling_unit_id" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="pollingUnit" required>
+                                    <select
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="pollingUnit" name="pollingUnit" required>
                                         <option value="">Select polling unit</option>
                                     </select>
+                                    <div id="polling-unit-loader" class="dropdown-loader">
+                                        <div class="spinner"></div>
+                                        <span>Loading polling units...</span>
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="hasVoterCard">
+                                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
+                                        for="hasVoterCard">
                                         Do you have a Voter's Card? <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="voters_card_number" class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" id="hasVoterCard" required>
+                                    <select name="voters_card_number"
+                                        class="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        id="hasVoterCard" required>
                                         <option value="">Select</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -368,7 +425,8 @@
 
                                 <div class="md:col-span-2">
                                     <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
-                                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Undertaking</h4>
+                                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                                            Undertaking</h4>
                                         <p class="text-gray-600 dark:text-gray-400 mb-4">
                                             I hereby declare that:
                                         </p>
@@ -380,9 +438,12 @@
                                         </ul>
                                     </div>
                                     <div class="flex items-center mt-4">
-                                        <input type="checkbox" id="agreement" class="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600" required>
+                                        <input type="checkbox" id="agreement"
+                                            class="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600"
+                                            required>
                                         <label for="agreement" class="ml-2 text-gray-700 dark:text-gray-300">
-                                            I agree to the undertaking and confirm all information is correct <span class="text-red-500">*</span>
+                                            I agree to the undertaking and confirm all information is correct <span
+                                                class="text-red-500">*</span>
                                         </label>
                                     </div>
                                 </div>
@@ -393,17 +454,20 @@
 
                         <!-- Navigation Buttons -->
                         <div class="flex justify-between items-center mt-8">
-                            <button type="button" id="prev-btn" class="hidden bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
+                            <button type="button" id="prev-btn"
+                                class="hidden bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
                                 <i class="fas fa-arrow-left mr-2"></i> Previous
                             </button>
 
                             <div class="flex-1"></div>
 
-                            <button type="button" id="next-btn" class="hidden bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
+                            <button type="button" id="next-btn"
+                                class="hidden bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
                                 Next <i class="fas fa-arrow-right ml-2"></i>
                             </button>
 
-                            <button type="submit" id="submit-btn" class="bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
+                            <button type="submit" id="submit-btn"
+                                class="bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
                                 <span id="submit-text">
                                     <i class="fas fa-paper-plane mr-2"></i> Submit Application
                                 </span>
@@ -416,15 +480,21 @@
                 </div>
 
                 <!-- Success Message -->
-                <div id="success-message" class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mt-8 text-center" data-aos="fade-up">
+                <div id="success-message"
+                    class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mt-8 text-center"
+                    data-aos="fade-up">
                     <div class="text-green-600 dark:text-green-400 text-6xl mb-4">
                         <i class="fas fa-check-circle"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">Application Submitted Successfully!</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">Application Submitted
+                        Successfully!</h3>
                     <p class="text-gray-600 dark:text-gray-400 mb-6">
-                        Thank you for joining Dr. Shamsuddeen's Solidarity Movement. Your registration has been received, and we're excited to have you as part of our mission for a better Sokoto State. You will receive a confirmation via email or SMS shortly.
+                        Thank you for joining Dr. Shamsuddeen's Solidarity Movement. Your registration has been
+                        received, and we're excited to have you as part of our mission for a better Sokoto State. You
+                        will receive a confirmation via email or SMS shortly.
                     </p>
-                    <a href="{{ route('home') }}" class="inline-block bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
+                    <a href="{{ route('home') }}"
+                        class="inline-block bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300">
                         <i class="fas fa-home mr-2"></i> Return to Home
                     </a>
                 </div>
@@ -441,16 +511,20 @@
                 </div>
 
                 <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-green-700 hover:bg-green-600 flex items-center justify-center transition-all duration-300">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -468,39 +542,27 @@
     <script src="script.js" defer></script>
     <script>
         // Registration form configuration
-        const DIRECTUS_API_URL = 'https://drshamsuddeenhaidomovement.com';
+        const DIRECTUS_API_URL = "https://drshamsuddeenhaidomovement.com";
 
-        // Ward data for each LGA in Sokoto State
-        const wardData = {
-
-
-        };
+        // Ward data for each LGA in Sokoto State (fallback)
+        const wardData = {};
         // Form state
-        let currentStep = 1;
-        const totalSteps = 1;
         let formData = {};
 
         // Initialize the form when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Registration form loaded');
-            initializeForm();
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Registration form loaded");
             setupLGAAndWard();
             setupPollingUnits();
-            // Attempt to fetch a CSRF token (if available) and populate hidden field
-            fetchCsrfToken();
+            setupFormSubmission();
         });
-
-        // Initialize form components
-        function initializeForm() {
-            setupStepNavigation();
-        }
 
         // Setup LGA and Ward dropdowns
         function setupLGAAndWard() {
-            const lgaSelect = document.getElementById('lga');
-            const wardSelect = document.getElementById('ward');
+            const lgaSelect = document.getElementById("lga");
+            const wardSelect = document.getElementById("ward");
 
-            lgaSelect.addEventListener('change', (e) => {
+            lgaSelect.addEventListener("change", (e) => {
                 const selectedLGA = e.target.value;
                 populateWards(selectedLGA);
             });
@@ -511,26 +573,28 @@
             }
         }
 
-        // Voter card number removed; only the Yes/No select remains
-
         // Populate ward dropdown based on selected LGA
         function populateWards(lga) {
-            const wardSelect = document.getElementById('ward');
+            const wardSelect = document.getElementById("ward");
+            const wardLoader = document.getElementById("ward-loader");
             wardSelect.innerHTML = '<option value="">Select ward</option>';
-            if (!lga) return;
+            if (!lga) {
+                if (wardLoader) wardLoader.style.display = 'none';
+                return;
+            }
+
+            // Show loader
+            if (wardLoader) wardLoader.style.display = 'flex';
+
             const url = `${DIRECTUS_API_URL}/lgas/${encodeURIComponent(lga)}/wards`;
 
             (async () => {
                 try {
                     const res = await fetch(url);
-                    if (!res.ok) throw new Error('Network response was not ok');
+                    if (!res.ok) throw new Error("Network response was not ok");
                     const json = await res.json();
 
-                    // Normalize possible envelopes. Examples:
-                    // { data: { wards: [...] } }
-                    // { data: [...] }
-                    // { wards: [...] }
-                    // [ ... ]
+                    // Normalize possible envelopes
                     let wards = [];
                     if (Array.isArray(json)) {
                         wards = json;
@@ -543,44 +607,45 @@
                     }
 
                     if (Array.isArray(wards) && wards.length > 0) {
-                        wards.forEach(w => {
-                            const option = document.createElement('option');
-                            const name = (typeof w === 'string') ? w : (w.name || w.title || w.ward || '').toString();
-                            const id = (w && w.id !== undefined && w.id !== null) ? w.id : null;
-                            option.value = id !== null ? id : name.toLowerCase().replace(/\//g, '-').replace(/\s+/g, '-');
+                        wards.forEach((w) => {
+                            const option = document.createElement("option");
+                            const name = typeof w === "string" ? w : (w.name || w.title || w.ward || "")
+                                .toString();
+                            const id = w && w.id !== undefined && w.id !== null ? w.id : null;
+                            option.value = id !== null ? id : name.toLowerCase().replace(/\//g, "-")
+                                .replace(/\s+/g, "-");
                             option.textContent = name || option.value;
                             wardSelect.appendChild(option);
                         });
-                        // done
-                        const pu = document.getElementById('pollingUnit');
+                        // Clear polling unit dropdown
+                        const pu = document.getElementById("pollingUnit");
                         if (pu) pu.innerHTML = '<option value="">Select polling unit</option>';
-                        return;
                     }
                 } catch (err) {
-                    console.warn('populateWards API attempt failed for', url, err);
+                    console.warn("populateWards API attempt failed for", url, err);
+                    // Fallback to offline wardData
+                    if (wardData[lga]) {
+                        wardData[lga].sort().forEach((ward) => {
+                            const option = document.createElement("option");
+                            option.value = ward.toLowerCase().replace(/\//g, "-").replace(/\s+/g, "-");
+                            option.textContent = ward;
+                            wardSelect.appendChild(option);
+                        });
+                    }
+                    showAlert("Failed to load wards. Using fallback data or select manually.", "warning");
+                } finally {
+                    // Hide loader
+                    if (wardLoader) wardLoader.style.display = 'none';
                 }
-
-                // Fallback to offline wardData
-                if (wardData[lga]) {
-                    wardData[lga].sort().forEach(ward => {
-                        const option = document.createElement('option');
-                        option.value = ward.toLowerCase().replace(/\//g, '-').replace(/\s+/g, '-');
-                        option.textContent = ward;
-                        wardSelect.appendChild(option);
-                    });
-                }
-
-                const pu = document.getElementById('pollingUnit');
-                if (pu) pu.innerHTML = '<option value="">Select polling unit</option>';
             })();
         }
 
         // Setup Polling Unit dropdown
         function setupPollingUnits() {
-            const wardSelect = document.getElementById('ward');
-            wardSelect.addEventListener('change', (e) => {
+            const wardSelect = document.getElementById("ward");
+            wardSelect.addEventListener("change", (e) => {
                 const selectedWard = e.target.value;
-                const lgaSelect = document.getElementById('lga');
+                const lgaSelect = document.getElementById("lga");
                 const selectedLGA = lgaSelect.value;
                 if (selectedLGA && selectedWard) {
                     populatePollingUnits(selectedWard);
@@ -588,85 +653,19 @@
             });
         }
 
-        // Attempt to fetch CSRF token from server and place it in the hidden input
-        async function fetchCsrfToken() {
-            const input = document.getElementById('csrfToken');
-            if (!input) return null;
-
-            // Candidate endpoints to try (can be overridden by CONFIG)
-            const candidates = [];
-            try {
-                if (typeof CONFIG !== 'undefined' && CONFIG?.ENDPOINTS && CONFIG.ENDPOINTS.CSRF_TOKEN) {
-                    candidates.push(CONFIG.ENDPOINTS.CSRF_TOKEN);
-                }
-                if (typeof CONFIG !== 'undefined' && CONFIG?.API && CONFIG.API.SUBMIT && CONFIG.API.SUBMIT.CSRF_ENDPOINT) {
-                    candidates.push(CONFIG.API.SUBMIT.CSRF_ENDPOINT);
-                }
-            } catch (e) {
-                // ignore
-            }
-
-            // default fallbacks
-            const base = (typeof CONFIG !== 'undefined' && CONFIG?.DIRECTUS_API_URL) ? CONFIG.DIRECTUS_API_URL : DIRECTUS_API_URL || '';
-            candidates.push(base.replace(/\/$/, '') + '/csrf-token');
-            candidates.push(base.replace(/\/$/, '') + '/session/csrf');
-
-                for (const url of candidates) {
-                if (!url) continue;
-                try {
-                    // optionally include credentials when fetching token if configured in CONFIG
-                    const fetchOpts = { method: 'GET', headers: { 'Accept': 'application/json' } };
-                    try {
-                        if (typeof CONFIG !== 'undefined' && CONFIG?.API && CONFIG.API.SUBMIT && CONFIG.API.SUBMIT.CSRF_USE_CREDENTIALS) {
-                            fetchOpts.credentials = 'include';
-                        }
-                    } catch (e) { /* ignore */ }
-
-                    const res = await fetch(url, fetchOpts);
-                    if (!res.ok) continue;
-
-                    // Try to read token from headers first
-                    const headerToken = res.headers.get('x-csrf-token') || res.headers.get('x-xsrf-token');
-                    if (headerToken) {
-                        input.value = headerToken;
-                        console.log('CSRF token obtained from header:', url);
-                        return headerToken;
-                    }
-
-                    const json = await res.json().catch(() => null);
-                    if (!json) continue;
-
-                    // possible shapes: { csrf_token: '...' }, { csrf: '...' }, { token: '...' }, { data: { csrf_token: '...' }}
-                    const token = json.csrf_token || json.csrf || json.token || (json.data && (json.data.csrf_token || json.data.token));
-                    if (token) {
-                        input.value = token;
-                        console.log('CSRF token obtained from', url);
-                        return token;
-                    }
-                } catch (err) {
-                    console.warn('fetchCsrfToken: failed to fetch', url, err);
-                    continue;
-                }
-            }
-
-            console.info('No CSRF token found from candidates; proceeding without one.');
-            return null;
-        }
-
-        // Populate polling unit dropdown based on LGA and ward
+        // Populate polling unit dropdown based on ward
         function populatePollingUnits(ward) {
-            const pollingUnitSelect = document.getElementById('pollingUnit');
+            const pollingUnitSelect = document.getElementById("pollingUnit");
+            const pollingUnitLoader = document.getElementById("polling-unit-loader");
             pollingUnitSelect.innerHTML = '<option value="">Select polling unit</option>';
-            console.log(ward)
-            // Try several endpoint patterns and normalize envelopes like:
-            // { data: { polling_units: [...] } } (your example)
-            // { data: [...] }
-            // { polling_units: [...] }
-            // direct array [...]
+
+            // Show loader
+            if (pollingUnitLoader) pollingUnitLoader.style.display = 'flex';
+
             const endpoints = [
                 `${DIRECTUS_API_URL}/wards/${encodeURIComponent(ward)}/polling-units`,
                 `${DIRECTUS_API_URL}/polling-units?filter[ward][_eq]=${encodeURIComponent(ward)}`,
-                `${DIRECTUS_API_URL}/items/polling_units?filter[ward][_eq]=${encodeURIComponent(ward)}`
+                `${DIRECTUS_API_URL}/items/polling_units?filter[ward][_eq]=${encodeURIComponent(ward)}`,
             ];
 
             const tryFetch = async () => {
@@ -679,15 +678,18 @@
                         let units = [];
                         if (Array.isArray(json)) units = json;
                         else if (json && Array.isArray(json.data)) units = json.data;
-                        else if (json && json.data && Array.isArray(json.data.polling_units)) units = json.data.polling_units;
+                        else if (json && json.data && Array.isArray(json.data.polling_units)) units = json.data
+                            .polling_units;
                         else if (json && Array.isArray(json.polling_units)) units = json.polling_units;
 
                         if (!Array.isArray(units) || units.length === 0) continue;
 
-                        units.forEach(unit => {
-                            const option = document.createElement('option');
-                            const name = (typeof unit === 'string') ? unit : (unit.name || unit.title || '').toString();
-                            const id = (unit && unit.id !== undefined && unit.id !== null) ? unit.id : name.toLowerCase().replace(/\s+/g, '-');
+                        units.forEach((unit) => {
+                            const option = document.createElement("option");
+                            const name = typeof unit === "string" ? unit : (unit.name || unit.title || "")
+                                .toString();
+                            const id = unit && unit.id !== undefined && unit.id !== null ? unit.id : name
+                                .toLowerCase().replace(/\s+/g, "-");
                             option.value = id;
                             option.textContent = name || id;
                             pollingUnitSelect.appendChild(option);
@@ -695,254 +697,155 @@
 
                         return true;
                     } catch (err) {
-                        console.warn('populatePollingUnits: failed to fetch from', url, err);
+                        console.warn("populatePollingUnits: failed to fetch from", url, err);
                         continue;
                     }
                 }
                 return false;
             };
 
-            tryFetch().then(found => {
+            tryFetch().then((found) => {
                 if (!found) {
-                    // Fallback to local pollingUnitData (if ward keyed by slug/name)
-                    // Try to locate by ward name or ward slug
-                    let foundLocal = false;
-                    for (const lgaKey in pollingUnitData) {
-                        const wardMap = pollingUnitData[lgaKey];
-                        if (!wardMap) continue;
-                        // exact match
-                        if (wardMap[ward]) {
-                            wardMap[ward].sort().forEach(pu => {
-                                const option = document.createElement('option');
-                                option.value = pu.toLowerCase().replace(/\//g, '-').replace(/\s+/g, '-');
-                                option.textContent = pu;
-                                pollingUnitSelect.appendChild(option);
-                            });
-                            foundLocal = true;
-                            break;
-                        }
-                        // try case-insensitive match
-                        const matchKey = Object.keys(wardMap).find(k => k.toLowerCase() === ward.toString().toLowerCase());
-                        if (matchKey) {
-                            wardMap[matchKey].sort().forEach(pu => {
-                                const option = document.createElement('option');
-                                option.value = pu.toLowerCase().replace(/\//g, '-').replace(/\s+/g, '-');
-                                option.textContent = pu;
-                                pollingUnitSelect.appendChild(option);
-                            });
-                            foundLocal = true;
-                            break;
-                        }
-                    }
-
-                    if (!foundLocal) {
-                        const option = document.createElement('option');
-                        option.value = '';
-                        option.textContent = 'No polling units available – enter manually';
-                        option.disabled = true;
-                        pollingUnitSelect.appendChild(option);
-                        showAlert('Polling unit data loading from API in production. Using samples for demo.', 'warning');
-                    }
+                    const option = document.createElement("option");
+                    option.value = "";
+                    option.textContent = "No polling units available – enter manually";
+                    option.disabled = true;
+                    pollingUnitSelect.appendChild(option);
+                    showAlert("Polling unit data loading from API in production. Using samples for demo.",
+                        "warning");
                 }
+                // Hide loader
+                if (pollingUnitLoader) pollingUnitLoader.style.display = 'none';
+            }).catch(() => {
+                // Hide loader on error
+                if (pollingUnitLoader) pollingUnitLoader.style.display = 'none';
             });
         }
 
-        // Setup step navigation
-        function setupStepNavigation() {
-            const nextBtn = document.getElementById('next-btn');
-            const prevBtn = document.getElementById('prev-btn');
-            const submitBtn = document.getElementById('submit-btn');
-            const form = document.getElementById('registration-form');
-
-            nextBtn.addEventListener('click', () => {
-                if (validateCurrentStep()) {
-                    nextStep();
-                }
-            });
-
-            prevBtn.addEventListener('click', () => {
-                prevStep();
-            });
-        }
-
-        // Step navigation functions
-        function nextStep() {
-            // single-page form: navigation not required
-        }
-
-        function prevStep() {
-            // single-page form: navigation not required
-        }
-
-        function updateProgress() {
-            // single-page form: no progress bar
-        }
-
-        function updateButtons() {
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const submitBtn = document.getElementById('submit-btn');
-            // Ensure submit is visible on single-page form
-            if (prevBtn) prevBtn.classList.add('hidden');
-            if (nextBtn) nextBtn.classList.add('hidden');
-            if (submitBtn) submitBtn.classList.remove('hidden');
-        }
-
-        // Form validation
-        function validateCurrentStep() {
-            const currentStepElement = document.getElementById(`step-${currentStep}`);
-            const requiredFields = currentStepElement.querySelectorAll('[required]');
-            let isValid = true;
-
-            clearErrors();
-
-            requiredFields.forEach(field => {
-                // Some selects may have non-string values; guard .value
-                const val = (field.value || '').toString();
-                if (!val.trim()) {
-                    isValid = false;
-                    field.classList.add('border-red-500');
-                    field.classList.remove('border-gray-300');
-                }
-            });
-
-            // Voter card number removed; only Yes/No select is required (already in requiredFields)
-
-            if (!isValid) {
-                showAlert('Please fill in all required fields.', 'error');
-            }
-
-            return isValid;
-        }
-
-        function clearErrors() {
-            const inputs = document.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                input.classList.remove('border-red-500');
-                input.classList.add('border-gray-300');
-            });
-        }
-
-        // Handle form submission feedback
-        // Handle form submission
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('registration-form');
+        // Setup form submission
+        function setupFormSubmission() {
+            const form = document.getElementById("registration-form");
             if (form) {
-                form.addEventListener('submit', async function(e) {
+                form.addEventListener("submit", async function(e) {
                     e.preventDefault();
 
-                    const submitBtn = document.getElementById('submit-btn');
-                    const submitText = document.getElementById('submit-text');
-                    const submitLoading = document.getElementById('submit-loading');
-                    const formContainer = document.querySelector('.bg-white');
-                    const successMessage = document.getElementById('success-message');
+                    const submitBtn = document.getElementById("submit-btn");
+                    const submitText = document.getElementById("submit-text");
+                    const submitLoading = document.getElementById("submit-loading");
+                    const formContainer = document.querySelector(".bg-white");
+                    const successMessage = document.getElementById("success-message");
+
+                    // Validate form
+                    if (!validateForm()) return;
 
                     try {
                         // Show loading state
                         if (submitBtn && submitText && submitLoading) {
-                            submitText.classList.add('hidden');
-                            submitLoading.classList.remove('hidden');
+                            submitText.classList.add("hidden");
+                            submitLoading.classList.remove("hidden");
                             submitBtn.disabled = true;
                         }
 
+                        // Convert form data to query string
                         const formData = new FormData(form);
-
-                        // Get CSRF token from meta tag or form input
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content ||
-                                        document.querySelector('input[name="_token"]')?.value;
-
-                        // Set up headers
-                        const headers = {
-                            'Accept': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest'
-                        };
-
-                        // Add CSRF token to headers if available
-                        if (csrfToken) {
-                            headers['X-CSRF-TOKEN'] = csrfToken;
-                        } else {
-                            // If no CSRF token found, add it to the form data
-                            formData.append('_token', '{{ csrf_token() }}');
+                        const params = new URLSearchParams();
+                        for (const [key, value] of formData) {
+                            params.append(key, value);
                         }
 
-                        const response = await fetch(form.action, {
-                            method: 'POST',
-                            headers: headers,
-                            body: formData,
-                            redirect: 'manual' // Don't follow redirects automatically
+                        const url = `${form.action}?${params.toString()}`;
+
+                        const response = await fetch(url, {
+                            method: "GET",
+                            headers: {
+                                Accept: "application/json",
+                                "X-Requested-With": "XMLHttpRequest",
+                            },
                         });
 
-                        // Check if the response is a redirect
-                        if (response.type === 'opaqueredirect' || response.redirected) {
-                            // If it's a redirect, let the browser handle it
-                            window.location.href = response.url || '/registration-success';
-                            return;
-                        }
-
-                        // If not a redirect, try to parse as JSON
-                        let data;
-                        try {
-                            const text = await response.text();
-                            data = text ? JSON.parse(text) : {};
-                        } catch (e) {
-                            // If JSON parsing fails, it might be an HTML error page
-                            console.error('Failed to parse response:', e);
-                            throw new Error('An unexpected error occurred. Please try again.');
-                        }
+                        const data = await response.json();
 
                         if (!response.ok) {
                             throw data;
                         }
 
-                        // If we get here, it's a successful JSON response
-                        if (data.redirect) {
-                            window.location.href = data.redirect;
-                        } else {
-                            // Fallback to default success page
-                            window.location.href = '/registration-success';
+                        // Show success message
+                        if (formContainer && successMessage) {
+                            formContainer.classList.add("hidden");
+                            successMessage.classList.remove("hidden");
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
                         }
-
                     } catch (error) {
                         // Handle errors
-                        let errorMessage = 'An error occurred. Please try again.';
-
+                        let errorMessage = "An error occurred. Please try again.";
                         if (error.errors) {
-                            // Handle validation errors
                             const errorMessages = [];
                             for (const [field, messages] of Object.entries(error.errors)) {
                                 errorMessages.push(...messages);
                             }
-                            errorMessage = errorMessages.join('\n');
+                            errorMessage = errorMessages.join("\n");
                         } else if (error.message) {
                             errorMessage = error.message;
                         }
-
-                        showAlert(errorMessage, 'error');
+                        showAlert(errorMessage, "error");
                     } finally {
                         // Reset button state
                         if (submitBtn && submitText && submitLoading) {
-                            submitText.classList.remove('hidden');
-                            submitLoading.classList.add('hidden');
+                            submitText.classList.remove("hidden");
+                            submitLoading.classList.add("hidden");
                             submitBtn.disabled = false;
                         }
                     }
                 });
             }
-        });
+        }
 
-        // Form field handling remains for client-side validation
+        // Form validation
+        function validateForm() {
+            const requiredFields = document.querySelectorAll("[required]");
+            let isValid = true;
+
+            clearErrors();
+
+            requiredFields.forEach((field) => {
+                const val = (field.value || "").toString();
+                if (!val.trim()) {
+                    isValid = false;
+                    field.classList.add("border-red-500");
+                    field.classList.remove("border-gray-300");
+                }
+            });
+
+            if (!isValid) {
+                showAlert("Please fill in all required fields.", "error");
+            }
+
+            return isValid;
+        }
+
+        // Clear error styles
+        function clearErrors() {
+            const inputs = document.querySelectorAll("input, select, textarea");
+            inputs.forEach((input) => {
+                input.classList.remove("border-red-500");
+                input.classList.add("border-gray-300");
+            });
+        }
 
         // Show alert message
-        function showAlert(message, type = 'error') {
-            const container = document.getElementById('alert-container');
-            const alert = document.createElement('div');
+        function showAlert(message, type = "error") {
+            const container = document.getElementById("alert-container");
+            const alert = document.createElement("div");
             alert.className = `alert alert-${type}`;
             alert.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <span>${message}</span>
-                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-lg font-bold">&times;</button>
-                </div>
-            `;
+          <div class="flex justify-between items-center">
+            <span>${message}</span>
+            <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-lg font-bold">&times;</button>
+          </div>
+        `;
             container.appendChild(alert);
 
             setTimeout(() => {
@@ -953,4 +856,5 @@
         }
     </script>
 </body>
+
 </html>
