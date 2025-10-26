@@ -129,7 +129,7 @@
         <nav class="flex flex-col space-y-4">
             <a href="#about" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">About</a>
             <a href="#objectives" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Objectives</a>
-            <a href="/register'" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Join SAF</a>
+            <a href="/register'" class="py-2 text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 border-b border-gray-200 dark:border-gray-700">Join Movement</a>
 
             <div class="flex items-center mt-4">
                 <span class="mr-3 text-gray-800 dark:text-gray-200">Theme:</span>
@@ -152,7 +152,7 @@
                         A grassroots movement dedicated to supporting Dr. Shamsuddeen Aliyu Haido's vision for transformative leadership and sustainable development in Sokoto State.
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="registration.html" class="btn-animated bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 text-center">
+                        <a href="/register" class="btn-animated bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 text-center">
                             <i class="fas fa-users mr-2"></i> Join the Movement
                         </a>
                         <a href="#about" class="btn-animated bg-transparent border-2 border-green-700 text-green-700 dark:text-green-500 hover:bg-green-700 hover:text-white dark:hover:bg-green-800 font-medium py-3 px-6 rounded-lg transition-all duration-300 text-center">
@@ -506,7 +506,7 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                        <a href="registration.html" class="btn-animated bg-white text-green-700 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg shadow-lg">
+                        <a href="/register" class="btn-animated bg-white text-green-700 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg shadow-lg">
                             <i class="fas fa-users mr-2"></i> Join the Movement
                         </a>
                         <a href="#about" class="btn-animated border-2 border-white text-white hover:bg-white hover:text-green-700 font-medium py-4 px-8 rounded-lg transition-all duration-300 text-lg">
@@ -577,7 +577,7 @@
                         <ul class="space-y-2">
                             <li><a href="#about" class="hover:text-green-400 transition-all duration-300">About the Movement</a></li>
                             <li><a href="#objectives" class="hover:text-green-400 transition-all duration-300">Our Objectives</a></li>
-                            <li><a href="registration.html" class="hover:text-green-400 transition-all duration-300">Join the Movement</a></li>
+                            <li><a href="/register" class="hover:text-green-400 transition-all duration-300">Join the Movement</a></li>
                         </ul>
                     </div>
 
